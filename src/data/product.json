@@ -1,1 +1,1 @@
-{"products":[{"item":"manzana"},{"item":"pera"},{"item":"arroz"},{"item":"lentejas"}]}
+{"products":[{"title":"tomate","description":"es rojo","code":"283iu7","price":"11","status":"false","stock":"3224","category":"frutas","id":2}]}
