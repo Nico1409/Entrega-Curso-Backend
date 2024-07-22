@@ -6,7 +6,6 @@ class productManager {
     this.productList = [];
   }
 
-  //Funcion para generar id autoincremental
   generateUniqueId() {
     if (this.productList.length === 0) {
       return 1;
@@ -16,12 +15,10 @@ class productManager {
     return lastProductId + 1;
   }
 
-  //Funcion para encontrar index de un producto mediante id
   getIndexById(pid) {
     return this.productList.findIndex((item) => item.id == pid);
   }
 
-  //Funcion para guardar actualizar datos en "product.json"
   async saveData() {
     await fs.promises.writeFile(
       this.path,
@@ -29,13 +26,10 @@ class productManager {
     );
   }
 
-  //Funcion para actualizar productList y retornar los productos del archivo "product.json"
   async getProductList() {
     try {
-      // Verificar si el archivo existe
       await fs.promises.access(this.path);
     } catch (error) {
-      // Si el archivo no existe, crearlo con un contenido inicial
       const initialContent = { products: [] };
       await fs.promises.writeFile(this.path, JSON.stringify(initialContent));
     }
@@ -45,7 +39,6 @@ class productManager {
     return [...this.productList];
   }
 
-  //Funcion para agregar un producto
   async addProduct(product) {
     await this.getProductList();
 
@@ -57,7 +50,6 @@ class productManager {
     return this.productList[product];
   }
 
-  //Funcion para borrar un producto mediante id
   async deleteProduct(pid) {
     await this.getProductList();
 
@@ -70,7 +62,6 @@ class productManager {
     }
   }
 
-  //Funcion para modificar un producto mediante id
   async changeProduct(pid, productChanged) {
     await this.getProductList();
     let indexToChange = this.getIndexById(pid);

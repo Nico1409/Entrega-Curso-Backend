@@ -3,7 +3,7 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import multer from "multer";
 
-const __filename = fileURLToPath(import.meta.url) // nos da la ruta desde donde se esta haciendo el import
+const __filename = fileURLToPath(import.meta.url)
 
 export const __dirname = dirname(__filename)
 

@@ -7,27 +7,20 @@ class productManager {
   }
 
   async getCartList() {
-    try {
-      // Verificar si el archivo existe
-      await fs.promises.access(this.path);
-    } catch (error) {
-      // Si el archivo no existe, crearlo con un contenido inicial
+    if (!fs.existsSync(this.path)) {
       const initialContent = { carts: [] };
       await fs.promises.writeFile(this.path, JSON.stringify(initialContent));
     }
 
-    // Leer el archivo
     const list = await fs.promises.readFile(this.path, "utf-8");
     this.cartList = JSON.parse(list).carts;
     return [...this.cartList];
   }
 
-  //Funcion para encontrar index de un producto mediante id
   getCartIndexById(cid) {
     return this.cartList.findIndex((item) => item.id == cid);
   }
 
-  //Funcion para guardar actualizar datos en "product.json"
   async saveData() {
     await fs.promises.writeFile(
       this.path,
@@ -35,7 +28,6 @@ class productManager {
     );
   }
 
-  //Funcion para generar id autoincremental
   generateUniqueId() {
     if (this.cartList.length === 0) {
       return 1;
@@ -44,7 +36,7 @@ class productManager {
 
     return lastCartId + 1;
   }
-  // Añade un carrito al listado
+
   async addCart(newCart) {
     await this.getCartList();
 
@@ -55,7 +47,7 @@ class productManager {
     await this.saveData();
     return newCart;
   }
-  //Agrega un producto a un carrito
+
   async addProductInCart(cid, pid) {
     await this.getCartList();
 
@@ -71,10 +63,8 @@ class productManager {
     );
 
     if (productIndex === -1) {
-      // Si el producto no está en el carrito, agregarlo con qty 1
       cart.products.push({ product: parseInt(pid), qty: 1 });
     } else {
-      // Si el producto ya está en el carrito, incrementar la cantidad
       cart.products[productIndex].qty += 1;
     }
 
