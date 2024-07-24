@@ -1,1 +1,1 @@
-{"products":[{"title":"tomate","description":"es rojo","code":"283iu7","price":"11","status":"false","stock":"3224","category":"frutas","id":2}]}
+{"products":[{"title":"tomate","description":"es rojo","code":"283iu7","price":"11","status":"false","stock":"3224","category":"frutas","thumbnails":"C:\\Users\\nicol\\Documents\\Practicas node\\Entrega-Curso-Backend\\src\\public\\img\\bobesponja-kqkH--1248x698@abc.webp","id":3},{"title":"mandarina","description":"asd","code":"123","price":"123","status":true,"stock":"123","category":"123","id":5}]}

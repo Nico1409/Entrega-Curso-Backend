@@ -52,8 +52,8 @@ class productManager {
 
   async deleteProduct(pid) {
     await this.getProductList();
-
     let indexToDelete = this.getIndexById(pid);
+    console.log(pid)
     if (indexToDelete == -1) return false;
     else {
       this.productList.splice(indexToDelete, 1);
