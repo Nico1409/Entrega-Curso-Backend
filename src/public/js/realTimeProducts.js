@@ -37,7 +37,7 @@ form.addEventListener('submit', (event) => {
 
 socket.on('updateProducts', (products) => {
   const productsTable = document.getElementById('products-table');
-  productsTable.innerHTML = ''; // Clear the table body
+  productsTable.innerHTML = ''; 
   console.log(products)
   products.forEach(product => {
     const row = document.createElement('tr');
